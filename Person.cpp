@@ -30,7 +30,7 @@ void Person :: setage(int a){
 
 void Person::setphone(string p) {
     phone = p;}
-void Person::setCnic(string c){
+void Person::setcnic(string c){
     cnic = c;
 }										// Getters used if i wanna retreive single value .
 string Person::getname(){
