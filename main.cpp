@@ -8,9 +8,11 @@ int main() {
 
     // Calling the method for each object
     p1.display();
+    cout<<endl;
     p1.setage(2025);
-    cout<<"Age is not big than 100 , if yes then default show 0 "<<endl;
+    cout<<"Age should not big than 100 , if yes then defaultly show 0 . Validation Use !\n "<<endl;
     p1.display();
+    cout<<endl;
     p2.display();
 
     return 0;
