@@ -30,6 +30,7 @@ public:
     string getcnic();
                               // VIRTUAL ka concept  = derived classes ka andar isi same name ka function or parameteres ko use karna ka lya 
     virtual void display(); 
+    virtual ~Person();
 };
 
 #endif
