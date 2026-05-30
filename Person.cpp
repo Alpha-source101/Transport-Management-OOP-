@@ -51,3 +51,7 @@ void Person::display() {
     cout<<"Phone:" <<phone<<endl;
     cout<<"CNIC: "<<cnic<<endl;
 }
+Person::~Person()
+{
+    cout << "Person Destructor Called" << endl;
+}
