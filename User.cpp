@@ -1,80 +1,77 @@
-#include "User.h"
+#include "user.h"
 #include <iostream>
 using namespace std;
 
-User::User(){
-    username = "Unknown";
-    password = "Unknown";
-    name = "";
-    age = 0;
-    phone = "";
-    cnic = "";
-                      // Why empty , For when you create user first, fill data later
+user::user(){        // empty constructor , default values
+    name="";
+    age =0;
+    phone ="";
+    cnic ="";
+    username= "";
+    password= "";
 }
-
-                                        // para constructor
-User::User(string un, string pass, string n, int a, string p, string c){
-    username = un;
-    password = pass;
+user::user(string n,int a,string ph,string c,string un,string pass){          
     name = n;
     age = a;
-    phone = p;
+    phone = ph;
     cnic = c;
-}
-
-                                          // SETTERS - to set values of data alonly also
-void User::setusername(string un) {
     username = un;
-}
-void User::setpassword(string pass) {
     password = pass;
 }
-void User::setname(string n) {
-    name = n; // For Private use : take value ? store in private variable
+void user::setname(string n){
+    name = n;
 }
-void User::setage(int a){
-    if( a>0 && a<100 ) {  // Validation!so koe aam apny sa age na likh saca .
+void user::setage(int a){
+    if(a>0 && a<100){ // validation check simple standard model
         age = a;
-    } else {
-        age = 0;  // Defaultly , set ujai at wrong input 
+    }else{
+        age = 0;
     }
 }
-void User::setphone(string p) {
-    phone = p;
+void user::setphone(string ph){
+    phone = ph;
 }
-void User::setcnic(string c){
+void user::setcnic(string c){
     cnic = c;
 }
+void user::setusername(string un){
+    username = un;
+}
 
-                                        // Getters used if i wanna retreive single value .
-string User::getusername() {
-    return username;
+void user::setpassword(string pass){
+    password = pass;
 }
-string User::getpassword() {
-    return password;
-}
-string User::getname(){
+
+string user::getname(){            // gettersgive single attributes values
     return name;
 }
-int User::getage(){
+int user::getage(){
     return age;
 }
-string User::getphone() {
+string user::getphone(){
     return phone;
 }
-string User::getcnic(){
+
+string user::getcnic(){
     return cnic;
 }
 
-void User::display() {
-    cout<<"Username: "<<username<<endl;
-    cout<<"Name: "<<name<<endl;
-    cout<<"Age: "<<age<<endl;
-    cout<<"Phone: " <<phone<<endl;
-    cout<<"CNIC: "<<cnic<<endl;
+string user::getusername(){
+    return username;
 }
 
-User::~User()
-{
-    cout << "User Destructor Called" << endl;
+string user::getpassword(){
+    return password;
+}
+
+void user::display(){
+    cout<<"name: "<<name<<endl;
+    cout<<"age: "<<age<<endl;
+    cout<<"phone: "<<phone<<endl;
+    cout<<"cnic: "<<cnic<<endl;
+    cout<<"username: "<<username<<endl;
+}
+        // virtual destructor safety clear
+user::~user(){
+    cout<<"user destructor called"<<endl;
 }
