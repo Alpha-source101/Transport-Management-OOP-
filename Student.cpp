@@ -1,30 +1,30 @@
-#include "student.h"
+#include "Student.h"
 #include <iostream>
 using namespace std;
 
-student::student():user(){                //defaulty //
+Student::student():User(){                //defaulty //
     rollnumber="unknown";
     department="unknown";
     semester =0;
 }
                             // data directly goes directly as protected in user
-student::student(string n,int a,string ph,string c,string un,string pass,string roll,string dept,int sem):user(n,a,ph,c,un,pass){
+Student::Student(string n,int a,string ph,string c,string un,string pass,string roll,string dept,int sem):User(n,a,ph,c,un,pass){
     rollnumber = roll;
     department = dept;
     semester = sem;
 }
 
-string student::getrollnumber(){
+string Student::getrollnumber(){
     return rollnumber;
 }
-string student::getdepartment(){
+string Student::getdepartment(){
     return department;
 }
-int student::getsemester(){
+int Student::getsemester(){
     return semester;
 }
                                     // override login portal checking systems matching strings
-bool student::login(string un,string pass){
+bool Student::login(string un,string pass){
     if(username == un && password == pass){                     // parent data variables checked directly
         return true;
     }else{
@@ -32,7 +32,7 @@ bool student::login(string un,string pass){
     }
 }
 
-void student::inputstudent(){
+void Student::inputstudent(){
     // parent variables loading directly because of protected structure
     cout<<"enter student name: ";
     getline(cin,name);
@@ -68,14 +68,14 @@ void student::inputstudent(){
     cin.ignore(); // safe clearance for next loop chains
 }
 
-    void student::display(){
-        user::display(); // prints name, age, phone, cnic, username automatically
+    void Student::display(){
+        User::display(); // prints name, age, phone, cnic, username automatically
         cout<<"roll number: "<<rollnumber<<endl;
         cout<<"department: "<<department<<endl;
         cout<<"semester: "<<semester<<endl;
     }
 
                                 // object life termination trigger clean message
-student::~student(){
+Student::~Student(){
     cout<<"student destructor called safely"<<endl;
 }
