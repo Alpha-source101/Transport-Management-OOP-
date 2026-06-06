@@ -25,10 +25,10 @@ void Bus::displayVehicle()
     cout << "\n===== BUS DETAILS =====" << endl;
 
     cout << "Vehicle ID: "
-         << vehicleID << endl;
+         << veh_ID << endl; // Fixed spelling from vehicleID
 
     cout << "Registration Number: "
-         << registrationNumber << endl;
+         << reg_no << endl; // Fixed spelling from registrationNumber
 
     cout << "Capacity: "
          << capacity << endl;
