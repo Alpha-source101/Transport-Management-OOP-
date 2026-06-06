@@ -1,14 +1,13 @@
 #include "Route.h"
-
 // Constructor
 Route::Route(string id,
              string start,
              string end,
              double dist)
 {
-    routeID = id;
-    startPoint = start;
-    endPoint = end;
+    route_ID = id;       
+    start_Point = start; 
+    end_Point = end;     
     distance = dist;
 }
 
@@ -49,16 +48,16 @@ UniversityRoute::~UniversityRoute()
 // Overridden Virtual Function
 void UniversityRoute::displayRoute()
 {
-    cout << "\n===== ROUTE DETAILS =====" << endl;
+    cout << "\n=====[ ROUTE DETAILS ]=====" << endl;
 
     cout << "Route ID: "
-         << routeID << endl;
+         << route_ID << endl; 
 
     cout << "Start Point: "
-         << startPoint << endl;
+         << start_Point << endl; 
 
     cout << "End Point: "
-         << endPoint << endl;
+         << end_Point << endl; 
 
     cout << "Distance: "
          << distance << " KM" << endl;
