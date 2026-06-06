@@ -1,26 +1,26 @@
-#include "admin.h"
+#include "Admin.h"
 #include<iostream>
 using namespace std;
 
-    admin::admin():user(){
+    Admin::Admin():User(){
         adminid = "unknown";
     }
 
-    admin::admin(string n,int a,string ph,string c,string un,string pass,string aid)
-    :user(n,a,ph,c,un,pass){
+    Admin::Admin(string n,int a,string ph,string c,string un,string pass,string aid)
+    :User(n,a,ph,c,un,pass){
             adminid = aid;
     }
 
-void admin::setadminid(string aid){
+void Admin::setadminid(string aid){
     adminid = aid;
 }
 
-string admin::getadminid(){
+string Admin::getadminid(){
     return adminid;
 }
 
                         // core authentication check for office management desk logins
-bool admin::login(string un,string pass){
+bool Admin::login(string un,string pass){
     if(username == un && password == pass){
         return true;
     }else{
@@ -29,7 +29,7 @@ bool admin::login(string un,string pass){
 }
 
                             // captures personal identity keys from user stream controls
-void admin::inputadmin(){
+void Admin::inputadmin(){
     cout<<"enter admin name: ";
     getline(cin,name);
     
@@ -58,12 +58,12 @@ void admin::inputadmin(){
 }
 
                             // prints administrative console metrics safely
-void admin::display(){
-            user::display();                     // loops up into username base variables output
+void Admin::display(){
+            User::display();                     // loops up into username base variables output
     cout<<"admin identification string id: "<<adminid<<endl;
 }
 
                                 // system garbage destruction handler report trace
-admin::~admin(){
+Admin::~Admin(){
     cout<<"admin destructor called safely"<<endl;
 }
