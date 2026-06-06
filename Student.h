@@ -1,26 +1,27 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-#include "User.h"               // parent class inherit link
-class Student:public User{
-private:        // student ka apna data secure encapsulation mein
+#include "User.h" // parent class inherit link
+class Student : public User
+{
+private: // student ka apna data secure encapsulation mein
     string rollnumber;
     string department;
     int semester;
 
 public:
     Student();
-    Student(string n,int a,string ph,string c,string un,string pass,
-            string roll,string dept,int sem);
+    Student(string n, int a, string ph, string c, string un, string pass,
+            string roll, string dept, int sem);
 
     string getrollnumber();
     string getdepartment();
     int getsemester();
 
-        ~Student() override;                    //  virtual destructor overriding
-        void inputstudent();        
-        void display() override;
-        bool login(string un,string pass) override; 
+    ~Student() override; //  virtual destructor overriding
+    void inputstudent();
+    void display() override;
+    bool login(string un, string pass) override;
 };
 #endif
 
