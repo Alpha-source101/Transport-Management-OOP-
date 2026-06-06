@@ -4,8 +4,8 @@
 #include<string>
 using namespace std;
 
-class user{
-    protected:      // niche waali classes use kar sakein gi direct
+class User{         
+protected:                      // niche waali classes use kar sakein gi direct
         string name;
         int age;
         string phone;
@@ -14,9 +14,8 @@ class user{
         string password;
 
     public:
-        user();
-        user(string n,int a,string ph,string c,string un,string pass);
-    
+User();
+User(string n,int a,string ph,string c,string un,string pass);    
     void setname(string n);            // setters alag alag value set karne k lya
     void setage(int a);
     void setphone(string ph);
@@ -32,8 +31,7 @@ class user{
     string getusername();
     string getpassword();
 
-    virtual ~user();         // destructor for safety no leakage
-    
+virtual ~User();    
     virtual void display(); 
     virtual bool login(string un,string pass)=0;         // pure virtual function login abstract bana rha ha
 };
