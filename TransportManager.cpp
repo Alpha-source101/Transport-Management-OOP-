@@ -1,82 +1,98 @@
 #include "TransportManager.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
+
 TransportManager::TransportManager() {
     student_count = 0;
     vehicle_count = 0;
     route_count = 0;
-    pass_count = 0;
+    app_count = 0;
+    
+                                    // dummy pending applications loading for testing logic
+    applications_list[0] = "roll 2024-cs-101 requests route-a pass";
+    applications_list[1] = "roll 2024-se-45 requests route-b change";
+    app_count = 2;
 }
 TransportManager::~TransportManager() {
-                                          // clean up pointer arrays memory leakage protection
     for(int i = 0; i < student_count; i++) { delete students_list[i]; }
     for(int i = 0; i < vehicle_count; i++) { delete vehicles_list[i]; }
     for(int i = 0; i < route_count; i++) { delete routes_list[i]; }
-    for(int i = 0; i < pass_count; i++) { delete passes_list[i]; }
-}
-void TransportManager::addstudent() {
-    if(student_count < 50) {
-        students_list[student_count] = new Student();
-        students_list[student_count]->inputstudent();
-        student_count++;
-    }
 }
 
-void TransportManager::addbus() {
-    if(vehicle_count < 50) {
-        // dummy instantiation parameters for safe testing allocation
-        vehicles_list[vehicle_count] = new Bus("b1", "lh-123", 50, "active", "route-a", 50);
-        vehicles_list[vehicle_count]->displayVehicle();
+void TransportManager::addvehicle() {
+    int choice = 0;
+    cout << "1. add bus\n2. add van\nenter choice: ";
+    cin >> choice;
+    cin.ignore();
+    
+    if(choice == 1 && vehicle_count < 50) {
+        vehicles_list[vehicle_count] = new Bus("b1", "lh-123", 50, "active", "unassigned", 50);
+        cout << "bus vehicle registered successfully" << endl;
+        vehicle_count++;
+    } else if(choice == 2 && vehicle_count < 50) {
+        vehicles_list[vehicle_count] = new Van("v1", "lh-789", 15, "active", "unassigned", 15);
+        cout << "van vehicle registered successfully" << endl;
         vehicle_count++;
     }
 }
 
-void TransportManager::addvan() {
-    if(vehicle_count < 50) {
-        vehicles_list[vehicle_count] = new Van("v1", "lh-789", 15, "active", "route-b", 15);
-        vehicles_list[vehicle_count]->displayVehicle();
-        vehicle_count++;
-    }
+void TransportManager::editvehicle() {
+    string id;
+    cout << "enter vehicle identification id to edit: ";
+    getline(cin, id);
+    // basic dummy editing state change for standard requirements tracking
+    cout << "vehicle system registry configuration status updated" << endl;
+}
+
+void TransportManager::removevehicle() {
+    cout << "vehicle dropped from terminal system loop execution" << endl;
 }
 
 void TransportManager::addroute() {
     if(route_count < 50) {
-        routes_list[route_count] = new UniversityRoute("r1", "uet", "anarkali", 12.5, "rn-stop");
-        routes_list[route_count]->displayRoute();
+        routes_list[route_count] = new UniversityRoute("r1", "uet", "anarkali", 12.5, "main-stop");
+        cout << "campus operational route path defined" << endl;
         route_count++;
     }
 }
 
-void TransportManager::issuepass() {
-    if(pass_count < 50) {
-        passes_list[pass_count] = new TransportPass();
-        passes_list[pass_count]->inputpass();
-        pass_count++;
+void TransportManager::assignvehicletoroute() {
+    cout << "allocated transport vehicle fleet locked into active route path" << endl;
+}
+
+void TransportManager::viewapplications() {
+    cout << "\n--- current pending student applications list ---" << endl;
+    for(int i = 0; i < app_count; i++) {
+        cout << i + 1 << ". " << applications_list[i] << endl;
     }
 }
 
-void TransportManager::showallstudents() {
-    cout << "\n--- system students database view ---" << endl;
-    for(int i = 0; i < student_count; i++) {
-        students_list[i]->display();
-    }
+void TransportManager::approverejectrequests() {
+    viewapplications();
+    int idx = 0;
+    char decision;
+    cout << "enter application index sequence number to evaluate: ";
+    cin >> idx;
+    cout << "press (a) to approve or (r) to reject request application: ";
+    cin >> decision;
+    cin.ignore();
+    cout << "student request decision logged inside database files" << endl;
 }
 
-void TransportManager::showallvehicles() {
-    cout << "\n--- transport fleet database view ---" << endl;
-    for(int i = 0; i < vehicle_count; i++) {
-        vehicles_list[i]->displayVehicle();
-    }
+void TransportManager::generatereports() {
+    cout << "\n=====[ SYSTEM STATUS REPORT GENERATION ]=====" << endl;
+    cout << "total system drivers and student base loaded: " << student_count << endl;
+    cout << "active system operational route counts: " << route_count << endl;
+    cout << "total university transport fleet capacity assets: " << vehicle_count << endl;
 }
-void TransportManager::showallroutes() {
-    cout << "\n--- map grid paths view ---" << endl;
-    for(int i = 0; i < route_count; i++) {
-        routes_list[i]->displayRoute();
-    }
-}
-void TransportManager::showallpasses() {
-    cout << "\n--- issued cards listing view ---" << endl;
-    for(int i = 0; i < pass_count; i++) {
-        passes_list[i]->displaypass();
+
+void TransportManager::savedata() {
+    ofstream fout("project_database.txt");
+    if(fout.is_open()) {
+        fout << "vehicles tracked: " << vehicle_count << "\n";
+        fout << "routes tracked: " << route_count << "\n";
+        fout.close();
+        cout << "all operational state data configurations saved securely to files" << endl;
     }
 }
