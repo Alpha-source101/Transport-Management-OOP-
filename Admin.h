@@ -1,53 +1,45 @@
 #ifndef ADMIN_H
 #define ADMIN_H
-
-#include <iostream>
-#include <string>
-#include "User.h"          // Parent class include ki
-using namespace std;
-
-class admin : public User 
-{
-private:              // admin ka specific data private rahega encapsulation ke liye
+#include "user.h" 
+class admin:public user{
+private:        
     string adminid;
 
 public:
-    // Constructors
     admin();
-    
-    admin(string un, string pass, string n, int a, string ph, string c, string aid);
+    admin(string n,int a,string ph,string c,string un,string pass,string aid);
 
-    void setadminid(string aid);        // Setter (value set karne ke liye)
-    string getadminid();                // Getter (value retrieve karne ke liye)
+    void setadminid(string aid);
+    string getadminid();
 
-    // Overriding User class login function (PDF Mandatory Requirement)
-    bool login(string un, string pass) override;
+    ~admin() override;                 // destructor override 
 
-    void inputadmin();                    // Admin register karne ke liye
-    void display() override;              // Details print karne ke liye
-    
-    virtual ~admin();                     // Clean pointer deletion ke liye
+    void inputadmin();
+    void display() override;
+    bool login(string un,string pass) override;                 // credentials override matching check
 };
-
 #endif
 
-
-//UML:
-                        +----------------------+
-                         |         User         |
-                         +----------------------+
-                                    ▲
-                                    |
-                               Inheritance
-                                    |
-                         +----------------------+
-                         |        admin         |
-                         +----------------------+
-                         | - adminid : string   |
-                         +----------------------+
-                         | + admin()            |
-                         | + login() override   |
-                         | + inputadmin()       |
-                         | + display() override |
-                         | + ~admin()           |
-                         +----------------------+
+/*                            //Bae INHERIT FROM USER// base user link ki header file
++------------------+
+|user|
++------------------+
+^
+|
+inheritance
+|
++------------------+
+|admin|
++------------------+
+|-adminid:string|
++------------------+
+|+admin()|
+|+admin(string,int,string,string,string,string,string)|
+|+getadminid()|
+|+setadminid()|
+|+~admin()override|
+|+inputadmin()|
+|+display()override|
+|+login()override|
++------------------+
+*/
