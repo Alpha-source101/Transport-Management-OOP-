@@ -35,3 +35,32 @@ public:
     
     virtual ~StudentPassenger();                  // Compiler/Linker safety aur clean pointer deletion ke liye};
 #endif
+
+/*
+                         +----------------------+
+                         |      Passenger       |
+                         +----------------------+
+                                    ▲
+                                    |
+                               Inheritance
+                                    |
+                         +----------------------+
+                         |   StudentPassenger   |
+                         +----------------------+
+                         | - rollnumber : string|
+                         | - department : string|
+                         | - semester : int     |
+                         +----------------------+
+                         | + StudentPassenger() |
+                         | + setrollnumber()    |
+                         | + setdepartment()    |
+                         | + setsemester()      |
+                         | + getrollnumber()    |
+                         | + getdepartment()    |
+                         | + getsemester()      |
+                         | + inputstudent()     |
+                         | + calcfee() override |
+                         | + display() override |
+                         | + ~StudentPassenger()|
+                         +----------------------+ 
+*/
