@@ -1,7 +1,7 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-#include "user.h" // parent class inherit link
+#include "User.h"               // parent class inherit link
 class student:public user{
 private:        // student ka apna data secure encapsulation mein
     string rollnumber;
