@@ -8,13 +8,14 @@
 #include "Van.h"
 #include "Route.h"
 
-class TransportManager {
+class TransportManager
+{
 private:
-    Student* students_list[50];
-    Vehicle* vehicles_list[50];
-    Route* routes_list[50];
+    Student *students_list[50];
+    Vehicle *vehicles_list[50];
+    Route *routes_list[50];
     string applications_list[50]; // simple array tracking user pending requests
-    
+
     int student_count;
     int vehicle_count;
     int route_count;
@@ -34,8 +35,11 @@ public:
     void approverejectrequests();
     void generatereports();
     void savedata();
-    
-    // student view function portal setup
-    void studentview();
+
+    // explicitly declared functions to solve compiler linkage
+    void showallstudents();
+    void showallvehicles();
+    void showallroutes();
 };
+
 #endif
