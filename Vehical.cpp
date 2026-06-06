@@ -21,4 +21,3 @@ int Vehicle::getCapacity() const
 {
     return capacity;
 }
-
