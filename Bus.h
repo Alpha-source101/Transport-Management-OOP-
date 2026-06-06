@@ -1,6 +1,7 @@
 #ifndef BUS_H
 #define BUS_H
 #include "Vehicle.h"
+#include <iostream>
 #include <string>
 using namespace std;
 
