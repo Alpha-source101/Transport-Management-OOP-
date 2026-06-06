@@ -1,8 +1,8 @@
-#include "user.h"
+#include "User.h"
 #include <iostream>
 using namespace std;
 
-user::user(){        // empty constructor , default values
+User::User(){               // empty constructor , default values
     name="";
     age =0;
     phone ="";
@@ -10,7 +10,7 @@ user::user(){        // empty constructor , default values
     username= "";
     password= "";
 }
-user::user(string n,int a,string ph,string c,string un,string pass){          
+User::User(string n,int a,string ph,string c,string un,string pass){
     name = n;
     age = a;
     phone = ph;
@@ -18,53 +18,53 @@ user::user(string n,int a,string ph,string c,string un,string pass){
     username = un;
     password = pass;
 }
-void user::setname(string n){
+void User::setname(string n){
     name = n;
 }
-void user::setage(int a){
+void User::setage(int a){
     if(a>0 && a<100){ // validation check simple standard model
         age = a;
     }else{
         age = 0;
     }
 }
-void user::setphone(string ph){
+void User::setphone(string ph){
     phone = ph;
 }
-void user::setcnic(string c){
+void User::setcnic(string c){
     cnic = c;
 }
-void user::setusername(string un){
+void User::setusername(string un){
     username = un;
 }
 
-void user::setpassword(string pass){
+void User::setpassword(string pass){
     password = pass;
 }
 
-string user::getname(){            // gettersgive single attributes values
+string User::getname(){            // gettersgive single attributes values
     return name;
 }
-int user::getage(){
+int User::getage(){
     return age;
 }
-string user::getphone(){
+string User::getphone(){
     return phone;
 }
 
-string user::getcnic(){
+string User::getcnic(){
     return cnic;
 }
 
-string user::getusername(){
+string User::getusername(){
     return username;
 }
 
-string user::getpassword(){
+string User::getpassword(){
     return password;
 }
 
-void user::display(){
+void User::display(){
     cout<<"name: "<<name<<endl;
     cout<<"age: "<<age<<endl;
     cout<<"phone: "<<phone<<endl;
@@ -72,6 +72,6 @@ void user::display(){
     cout<<"username: "<<username<<endl;
 }
         // virtual destructor safety clear
-user::~user(){
+User::~User(){
     cout<<"user destructor called"<<endl;
 }
