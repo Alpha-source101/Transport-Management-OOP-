@@ -1,19 +1,43 @@
+#include "TransportManager.h"
 #include <iostream>
-#include "Person.h" // Include your header file
-#include "Person.cpp"
+using namespace std;
+
 int main() {
-    // Calling the parametric constructor to create objects
-    Person p1("Bilal", 1022,"02335456","3545365645");
-    Person p2("Honda", 2025,"08438494","3259574646");
+    TransportManager manager;
+    int choice = 0;
+    
+    while(true) {
+        cout << "\n====={ uet Transit system main desk }=====" << endl;
+        cout << "1. register student profile\n";
+        cout << "2. issue network transport pass\n";
+        cout << "3. register new fleet infrastructure (bus/van/routes)\n";
+        cout << "4. print global tracking metrics lists\n";
+        cout << "5. shut down terminal dashboard application\n";
+        cout << "enter terminal route option choice: ";
+        cin >> choice;
+        cin.ignore();
 
-    // Calling the method for each object
-    p1.display();
-    cout<<endl;
-    p1.setage(2025);
-    cout<<"Age should not big than 100 , if yes then defaultly show 0 . Validation Use !\n "<<endl;
-    p1.display();
-    cout<<endl;
-    p2.display();
-
+        if(choice == 1) {
+            manager.addstudent();
+        }
+        else if(choice == 2) {
+            manager.issuepass();
+        }
+        else if(choice == 3) {
+            manager.addbus();
+            manager.addroute();
+        }
+        else if(choice == 4) {
+            manager.showallstudents();
+            manager.showallpasses();
+        }
+        else if(choice == 5) {
+            cout << "system memory flushed safely. exiting application frame..." << endl;
+            break;
+        }
+        else {
+            cout << "invalid selection retry parameters input sequence" << endl;
+        }
+    }
     return 0;
 }
