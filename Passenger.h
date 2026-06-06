@@ -31,7 +31,7 @@ int getpassengerid();           //single retreive ka lya
       int gettransportfee();
     
     void inputpassenger();    //input all
-    virtual void calculatetransportfee(int distance);
+    virtual void calculatetransportfee();
     void display() override;             //display kary ga all      ----> its override used
     virtual ~Passenger();
 };
