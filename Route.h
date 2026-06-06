@@ -47,4 +47,16 @@ public:
     double getDistance() const;
 };
 
+// Added missing Derived Class declaration that partner used in cpp
+class UniversityRoute : public Route
+{
+private:
+    string* stopName; // Dynamic memory representation
+
+public:
+    UniversityRoute(string id, string start, string end, double dist, string stop);
+    ~UniversityRoute();
+    void displayRoute() override;
+};
+
 #endif
