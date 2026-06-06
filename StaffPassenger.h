@@ -31,3 +31,33 @@ class StaffPassenger : public Passenger {
       virtual ~StaffPassenger();
 };
 #endif
+
+
+/*
+                         +----------------------+
+                         |      Passenger       |
+                         +----------------------+
+                                    ▲
+                                    |
+                               Inheritance
+                                    |
+                         +----------------------+
+                         |    StaffPassenger    |
+                         +----------------------+
+                         | - staffid : string   |
+                         | - jobrole : string   |
+                         | - officeblock : string|
+                         +----------------------+
+                         | + StaffPassenger()   |
+                         | + setstaffid()       |
+                         | + setjobrole()       |
+                         | + setofficeblock()   |
+                         | + getstaffid()       |
+                         | + getjobrole()       |
+                         | + getofficeblock()   |
+                         | + inputstaff()       |
+                         | + calcfee() override |
+                         | + display() override |
+                         | + ~StaffPassenger()  |
+                         +----------------------+ 
+*/
