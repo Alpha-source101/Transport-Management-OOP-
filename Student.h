@@ -2,29 +2,29 @@
 #define STUDENT_H
 
 #include "User.h"               // parent class inherit link
-class student:public user{
+class Student:public User{
 private:        // student ka apna data secure encapsulation mein
     string rollnumber;
     string department;
     int semester;
 
 public:
-    student();
-    student(string n,int a,string ph,string c,string un,string pass,
+    Student();
+    Student(string n,int a,string ph,string c,string un,string pass,
             string roll,string dept,int sem);
 
     string getrollnumber();
     string getdepartment();
     int getsemester();
 
-        ~student() override; `                    //  virtual destructor overriding
+        ~Student() override;                    //  virtual destructor overriding
         void inputstudent();        
         void display() override;
         bool login(string un,string pass) override; 
 };
 #endif
 
-/*                                    //BASE THAT INHERIT with Root User
+/* //BASE THAT INHERIT with Root User
 +------------------+
 |user|
 +------------------+
