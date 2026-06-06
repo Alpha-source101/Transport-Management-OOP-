@@ -1,1 +1,11 @@
+# ignore compiled object files binaries tracking
+*.o
+*.obj
+*.exe
+*.out
 
+# ignore local IDE tracking cache configurations files
+.vscode/
+.idea/
+*.layout
+*.depend
