@@ -1,5 +1,4 @@
 #include "Bus.h"
-#include <iostream>
 
 Bus::Bus(string id, string type, int cap, string bNo, string rName) : Vehicle(id, type, cap),bus_Number(bNo), route_Name(rName){}
 
