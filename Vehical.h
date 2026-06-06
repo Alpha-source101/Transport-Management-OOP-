@@ -41,4 +41,3 @@ public:
     int getCapacity() const;
 };
 #endif
-
