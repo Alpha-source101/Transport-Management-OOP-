@@ -1,51 +1,69 @@
 #include "admin.h"
+#include<iostream>
+using namespace std;
 
-admin::admin() : User()
-{
-    adminid = "Unknown";
-}
+    admin::admin():user(){
+        adminid = "unknown";
+    }
 
-admin::admin(string un, string pass, string n, int a, string ph, string c, string aid) 
-    : User(un, pass, n, a, ph, c), adminid(aid) {}
+    admin::admin(string n,int a,string ph,string c,string un,string pass,string aid)
+    :user(n,a,ph,c,un,pass){
+            adminid = aid;
+    }
 
 void admin::setadminid(string aid){
-    adminid = aid;     }
+    adminid = aid;
+}
 
 string admin::getadminid(){
-    return adminid;     }
-
-// Checking credentials for Admin Portal login menu
-bool admin::login(string un, string pass) {
-    return (username == un && password == pass);
+    return adminid;
 }
 
+                        // core authentication check for office management desk logins
+bool admin::login(string un,string pass){
+    if(username == un && password == pass){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+                            // captures personal identity keys from user stream controls
 void admin::inputadmin(){
-    cin.ignore();
-    cout << "Enter Admin Username: ";
-    getline(cin, username);
-    cout << "Enter Admin Password: ";
-    getline(cin, password);
-    cout << "Enter Admin Name: ";
-    getline(cin, name);
-    cout << "Enter Admin Age: ";
-    cin >> age;
-    cin.ignore();
-    cout << "Enter Phone: ";
-    getline(cin, phone);
-    cout << "Enter CNIC: ";
-    getline(cin, cnic);
+    cout<<"enter admin name: ";
+    getline(cin,name);
     
-    // Admin ka apna specific data input lo
-    cout << "Enter your Admin ID (e.g., ADMIN-2026): " << endl;
-    getline(cin, adminid);
-}
-   
-void admin::display(){               // Overriding parent display
-    User::display();
-    cout << "Admin ID : " << adminid << endl;
+    cout<<"enter admin age: ";
+    cin>>age;
+    
+    if(age<=0 || age>100){                     // standard protection limits safety
+        age = 0;
+    }
+    
+    cin.ignore();
+    cout<<"enter admin phone number: ";
+    getline(cin,phone);
+    
+    cout<<"enter admin cnic card number: ";
+    getline(cin,cnic);
+    
+    cout<<"create admin office username: ";
+    getline(cin,username);
+    
+    cout<<"create admin office password: ";
+    getline(cin,password);
+    
+    cout<<"enter office admin id reference (e.g., adm-2026): ";
+    getline(cin,adminid);
 }
 
-admin::~admin()
-{
-    cout << "admin Destructor Called" << endl;
+                            // prints administrative console metrics safely
+void admin::display(){
+            user::display();                     // loops up into username base variables output
+    cout<<"admin identification string id: "<<adminid<<endl;
+}
+
+                                // system garbage destruction handler report trace
+admin::~admin(){
+    cout<<"admin destructor called safely"<<endl;
 }
