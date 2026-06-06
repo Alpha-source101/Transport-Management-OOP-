@@ -89,8 +89,8 @@ void Passenger::inputpassenger()
     setcnic(c);
 
 }
-void Passenger::calculatetransportfee(int distance){
-    transportfee = distance * 50;
+void Passenger::calculatetransportfee(){
+    transportfee = 0;
 }
                     
 void Passenger::display()            //overiding
