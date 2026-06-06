@@ -14,4 +14,30 @@ double Booking::calculateFee()
 Booking::~Booking()
 {
 }
-
+/*
+                 <<Abstract>>
+             +--------------------+
+             |      Booking       |
+             +--------------------+
+             | # bookingID : int  |
+             | # bookingDate:str  |
+             +--------------------+
+             | + Booking()        |
+             | + displayBooking()=0 |
+             | + calculateFee()   |
+             | + ~Booking()       |
+             +--------------------+
+                       ▲
+                       |
+                       |
+             +--------------------+
+             |  StudentBooking    |
+             +--------------------+
+             | - seatNumber : int |
+             | - fee : double     |
+             +--------------------+
+             | + StudentBooking() |
+             | + displayBooking() |
+             | + calculateFee()   |
+             +--------------------+
+*/
