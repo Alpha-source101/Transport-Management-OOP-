@@ -37,3 +37,35 @@ int getpassengerid();           //single retreive ka lya
 };
 #endif
 
+                                                //BASE PASSENGER INHERIT PERSON 
+/*
+                         +----------------------+
+                         |        Person        |
+                         +----------------------+
+                                    ▲
+                                    |
+                               Inheritance
+                                    |
+                         +----------------------+
+                         |      Passenger       |
+                         +----------------------+
+                         | # passengerid : int  |
+                         | # pickuppoint : string|
+                         | # destination : string|
+                         | # transportfee : int |
+                         +----------------------+
+                         | + Passenger()        |
+                         | + setpassengerid()   |
+                         | + setpickuppoint()   |
+                         | + setdestination()   |
+                         | + settransportfee()  |
+                         | + getpassengerid()   |
+                         | + getpickuppoint()   |
+                         | + getdestination()   |
+                         | + gettransportfee()  |
+                         | + inputpassenger()   |
+                         | + virtual calcfee()  |
+                         | + display() override |
+                         | + ~Passenger()       |
+                         +----------------------+ 
+*/
