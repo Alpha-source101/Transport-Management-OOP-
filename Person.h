@@ -34,3 +34,28 @@ public:
 };
 
 #endif
+
+
+                                    //THE ROOT CLASS :
+/*
+                +----------------------+
+                |        Person        |
+                +----------------------+
+                | - name : string      |
+                | - age : int          |
+                | - phone : string     |
+                | - cnic : string      |
+                +----------------------+
+                | + Person()           |
+                | + setname()          |
+                | + setage()           |
+                | + setphone()         |
+                | + setcnic()          |
+                | + getname()          |
+                | + getage()           |
+                | + getphone()         |
+                | + getcnic()          |
+                | + virtual display()  |
+                | + virtual ~Person()  |
+                +----------------------+ 
+*/
