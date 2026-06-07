@@ -185,22 +185,28 @@ void TransportManager::viewapplications()
 }
 
 // 7. approve / reject requests option (sach mein evaluate kar ke app count reduce karta hai)
+// 7. approve / reject requests option (fixed buffer input stream crash bug)
 void TransportManager::approverejectrequests()
 {
     viewapplications();
     if (app_count == 0)
+    {
+        cout << "no pending student applications left to process" << endl;
         return;
+    }
 
     int target_idx = 0;
     char evaluation_flag;
     cout << "select targeted application index line to process evaluation: ";
     cin >> target_idx;
-    cout << "press (a) to authorize permission approval or (r) to enforce rejection drop: ";
-    cin >> evaluation_flag;
-    cin.ignore();
 
+    // safe validation check to avoid out of bounds crash
     if (target_idx > 0 && target_idx <= app_count)
     {
+        cout << "press (a) to authorize permission approval or (r) to enforce rejection drop: ";
+        cin >> evaluation_flag;
+        cin.ignore(); // securely clears character stream buffer
+
         // dynamic queue shifting sequence loop processing tracking updates
         for (int i = target_idx - 1; i < app_count - 1; i++)
         {
@@ -211,6 +217,7 @@ void TransportManager::approverejectrequests()
     }
     else
     {
+        cin.ignore(); // flush bad input buffer on wrong index
         cout << "invalid application array index context targeted" << endl;
     }
 }
