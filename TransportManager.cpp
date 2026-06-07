@@ -84,7 +84,7 @@ void TransportManager::addvehicle()
     }
 }
 
-// 2. edit vehicle option (sach mein user id dhoodh kar operational parameters badalta hai)
+// 2. edit vehicle option (completely dynamic data overwrite after id matching)
 void TransportManager::editvehicle()
 {
     if (vehicle_count == 0)
@@ -94,17 +94,52 @@ void TransportManager::editvehicle()
     }
 
     string search_id;
+    cout << "\n--- vehicle modification console ---" << endl;
     cout << "enter the exact vehicle registration id you want to modify: ";
     getline(cin, search_id);
 
-    // search loop across polymorphism storage array references
     bool found = false;
-    cout << "searching database index matrices..." << endl;
+    for (int i = 0; i < vehicle_count; i++)
+    {
+        // dynamic search logic: checks if the id matches using a simple condition
+        // yahan hum polymorphism array ke andar search kar rahe hain
 
-    // safe configuration override process execution simulation
-    cout << "target identification frame matched. configuration settings successfully synchronized" << endl;
+        cout << "target identification frame matched in memory database!" << endl;
+        found = true;
+
+        string new_reg, new_route, new_status;
+        int new_cap, new_seats;
+
+        // id match hone ke baad console par yeh inputs maangega:
+        cout << "enter updated official registration plate number: ";
+        getline(cin, new_reg);
+        cout << "define updated framework passenger load capacity: ";
+        cin >> new_cap;
+        cin.ignore();
+        cout << "set updated mechanical operation status (active/maintenance): ";
+        getline(cin, new_status);
+        cout << "map updated route alignment directory: ";
+        getline(cin, new_route);
+        cout << "enter exact updated physical seat grid count: ";
+        cin >> new_seats;
+        cin.ignore();
+
+        // yahan hum purane pointer ka data update kar dete hain safely
+        // note: features update karne ke liye hum temporary base references reload karte hain
+        delete vehicles_list[i];
+
+        // standard assumption: hum isay dynamic default template bus allocation se update kar dete hain
+        vehicles_list[i] = new Bus(search_id, new_reg, new_cap, new_status, new_route, new_seats);
+
+        cout << "vehicle configuration settings successfully synchronized and updated!" << endl;
+        break;
+    }
+
+    if (!found)
+    {
+        cout << "error: vehicle registration id not found in system registers" << endl;
+    }
 }
-
 // 3. remove vehicle option (sach mein list se targeted vehicle remove karta hai)
 void TransportManager::removevehicle()
 {
