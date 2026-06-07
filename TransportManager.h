@@ -2,19 +2,19 @@
 #define TRANSPORTMANAGER_H
 
 #include "Student.h"
-#include "Admin.h"
-#include "Driver.h"
+#include "Vehicle.h"
 #include "Bus.h"
 #include "Van.h"
 #include "Route.h"
+#include <string>
 
 class TransportManager
 {
 private:
     Student *students_list[50];
     Vehicle *vehicles_list[50];
-    Route *routes_list[50];
-    string applications_list[50]; // simple array tracking user pending requests
+    UniversityRoute *routes_list[50];
+    std::string applications_list[50];
 
     int student_count;
     int vehicle_count;
@@ -25,7 +25,6 @@ public:
     TransportManager();
     ~TransportManager();
 
-    // core logic functions matching mam menu exactly
     void addvehicle();
     void editvehicle();
     void removevehicle();
@@ -35,9 +34,11 @@ public:
     void viewapplications();
     void approverejectrequests();
     void generatereports();
-    void savedata();
 
-    // explicitly declared functions to solve compiler linkage
+    // FIX: Yeh declarations zaroori theen taqe compile ho sakay
+    void savedata();
+    void loaddata();
+
     void showallstudents();
     void showallvehicles();
     void showallroutes();

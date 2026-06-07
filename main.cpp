@@ -8,50 +8,73 @@ int main()
     TransportManager manager;
     int portal_choice = 0;
 
+    // FIX: Program start hote hi sab se pehle purana data file se uthaye ga
+    manager.loaddata();
+
     while (true)
     {
-        cout << "\n=====[ uet main transport terminal panel ]=====" << endl;
-        cout << "1. admin control portal login\n";
-        cout << "2. student services view\n";
-        cout << "3. exit core application manager\n";
-        cout << "select active screen portal option: ";
+        // Centered Main Menu
+        cout << "\n=======================================================" << endl;
+        cout << "                       MAIN MENU                       " << endl;
+        cout << "=======================================================" << endl;
+        cout << "  [1] Admin Login" << endl;
+        cout << "  [2] Student View" << endl;
+        cout << "  [3] Exit" << endl;
+        cout << "-------------------------------------------------------" << endl;
+        cout << "  Select option: ";
         cin >> portal_choice;
-        cin.ignore();
+
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "\n  [Error]: Enter numbers (1-3) only!" << endl;
+            continue;
+        }
+        cin.ignore(1000, '\n');
 
         if (portal_choice == 1)
         {
-            string input_user;
-            string input_pass;
+            string input_user = "";
+            string input_pass = "";
 
-            cout << "\n--- security authentication checkpoint ---" << endl;
-            cout << "enter master admin username: ";
+            cout << "\n=================[ ADMIN LOGIN PORTAL ]================" << endl;
+            cout << "  Username: ";
             getline(cin, input_user);
-            cout << "enter master admin password: ";
+            cout << "  Password: ";
             getline(cin, input_pass);
 
-            // strict verification match for specialized secure access shield
             if (input_user == "admin" && input_pass == "uet2026")
             {
-                cout << "\naccess granted! welcome to corporate command station." << endl;
+                cout << "\n  >> Access Granted! Welcome." << endl;
 
                 int admin_option = 0;
                 while (true)
                 {
-                    cout << "\n--- admin functional controls console ---" << endl;
-                    cout << "1. add vehicle\n";
-                    cout << "2. edit vehicle\n";
-                    cout << "3. remove vehicle\n";
-                    cout << "4. add route\n";
-                    cout << "5. edit route\n";
-                    cout << "6. assign vehicle to route\n";
-                    cout << "7. view applications\n";
-                    cout << "8. approve / reject requests\n";
-                    cout << "9. generate reports\n";
-                    cout << "10. save data\n";
-                    cout << "11. logout\n";
-                    cout << "enter admin action code: ";
+                    cout << "\n================[ ADMIN CONTROL PANEL ]================" << endl;
+                    cout << "  1. Add Vehicle\n";
+                    cout << "  2. Edit Vehicle\n";
+                    cout << "  3. Remove Vehicle\n";
+                    cout << "  4. Add Route\n";
+                    cout << "  5. Edit Route\n";
+                    cout << "  6. Assign Route\n";
+                    cout << "  7. View Applications\n";
+                    cout << "  8. Process Application\n";
+                    cout << "  9. Generate Reports\n";
+                    cout << "  10. Save Data\n";
+                    cout << "  11. Logout\n";
+                    cout << "-------------------------------------------------------" << endl;
+                    cout << "  Enter option: ";
                     cin >> admin_option;
-                    cin.ignore();
+
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        cout << "\n  [Error]: Enter numbers (1-11) only!" << endl;
+                        continue;
+                    }
+                    cin.ignore(1000, '\n');
 
                     if (admin_option == 1)
                     {
@@ -72,7 +95,7 @@ int main()
                     else if (admin_option == 5)
                     {
                         manager.editroute();
-                    } // connects directly to backend logic
+                    }
                     else if (admin_option == 6)
                     {
                         manager.assignvehicletoroute();
@@ -95,34 +118,37 @@ int main()
                     }
                     else if (admin_option == 11)
                     {
-                        cout << "admin logged out safely" << endl;
+                        cout << "\n  >> Logged out successfully!" << endl;
                         break;
                     }
                     else
                     {
-                        cout << "invalid admin operation option selection" << endl;
+                        cout << "\n  [Error]: Invalid option selection!" << endl;
                     }
                 }
             }
             else
             {
-                cout << "security alert: invalid credentials! access denied." << endl;
+                cout << "\n  [Denied]: Invalid credentials!" << endl;
             }
         }
         else if (portal_choice == 2)
         {
-            cout << "\n--- Student View Dashboard panel ---" << endl;
-            cout << "displaying operational active route details tracking lists..." << endl;
+            cout << "\n=================[ STUDENT DASHBOARD ]=================" << endl;
             manager.showallroutes();
+
+            cout << "-------------------------------------------------------" << endl;
+            cout << "  Press Enter to go back to Main Menu...";
+            cin.get();
         }
         else if (portal_choice == 3)
         {
-            cout << "application runtime state safely closed." << endl;
+            cout << "\n  >> Management session ended successfully." << endl;
             break;
         }
         else
         {
-            cout << "invalid portal option targeted" << endl;
+            cout << "\n  [Error]: Invalid selection!" << endl;
         }
     }
     return 0;
