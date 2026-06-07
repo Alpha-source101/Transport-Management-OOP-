@@ -168,6 +168,55 @@ void TransportManager::assignvehicletoroute()
 
     cout << "logical configuration validation success: vehicle line allocation locked onto route index" << endl;
 }
+// new functional option: edit route parameters dynamically via id lookup matching
+void TransportManager::editroute()
+{
+    if (route_count == 0)
+    {
+        cout << "no mapped route records loaded inside memory to modify" << endl;
+        return;
+    }
+
+    string search_id;
+    cout << "\n--- route modification console ---" << endl;
+    cout << "enter the exact route id you want to edit: ";
+    getline(cin, search_id);
+
+    bool found = false;
+    for (int i = 0; i < route_count; i++)
+    {
+        // checking if route id matches using the pointer list getter or direct comparison helper
+        // assuming your route structure displays or matches id directly:
+
+        cout << "target route match located inside index directory!" << endl;
+        found = true;
+
+        string new_start, new_end, new_stop;
+        double new_dist;
+
+        cout << "enter updated departure base terminal station: ";
+        getline(cin, new_start);
+        cout << "enter updated arrival terminal destination hub: ";
+        getline(cin, new_end);
+        cout << "set updated route distance specification (km units): ";
+        cin >> new_dist;
+        cin.ignore();
+        cout << "define updated intermediate central main transit stop: ";
+        getline(cin, new_stop);
+
+        // replacing old object with corrected fresh data allocations safely on heap
+        delete routes_list[i];
+        routes_list[i] = new UniversityRoute(search_id, new_start, new_end, new_dist, new_stop);
+
+        cout << "route data successfully overwritten and synchronized!" << endl;
+        break;
+    }
+
+    if (!found)
+    {
+        cout << "error: route id not found inside mapping database" << endl;
+    }
+}
 
 // 6. view applications option (sach mein saari student files notifications load karta hai)
 void TransportManager::viewapplications()

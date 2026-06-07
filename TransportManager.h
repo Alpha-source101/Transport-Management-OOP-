@@ -30,6 +30,7 @@ public:
     void editvehicle();
     void removevehicle();
     void addroute();
+    void editroute();
     void assignvehicletoroute();
     void viewapplications();
     void approverejectrequests();
