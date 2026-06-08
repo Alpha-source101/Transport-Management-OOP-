@@ -5,6 +5,19 @@
 
 using namespace std;
 
+// Parallel Arrays to hold real user input string data safely without constructor issues
+string real_v_id[50];
+string real_v_reg[50];
+string real_v_status[50];
+int real_v_cap[50];
+int real_v_seats[50];
+
+string real_r_id[50];
+string real_r_start[50];
+string real_r_end[50];
+double real_r_dist[50];
+string real_r_stop[50];
+
 // ==================== CONSTRUCTOR ====================
 TransportManager::TransportManager()
 {
@@ -32,14 +45,8 @@ TransportManager::~TransportManager()
 {
     for (int i = 0; i < 50; i++)
     {
-        if (vehicles_list[i] != nullptr)
-        {
-            vehicles_list[i] = nullptr;
-        }
-        if (routes_list[i] != nullptr)
-        {
-            routes_list[i] = nullptr;
-        }
+        vehicles_list[i] = nullptr;
+        routes_list[i] = nullptr;
     }
 }
 
@@ -88,7 +95,13 @@ void TransportManager::addvehicle()
     }
     cin.ignore(1000, '\n');
 
-    // PERFECT CONSTRUCTOR BYPASS: Argument limits runtime syntax fix
+    // Store user data into parallel arrays
+    real_v_id[vehicle_count] = id;
+    real_v_reg[vehicle_count] = reg;
+    real_v_status[vehicle_count] = status;
+    real_v_cap[vehicle_count] = cap;
+    real_v_seats[vehicle_count] = seats;
+
     vehicles_list[vehicle_count] = (Bus *)nullptr;
     vehicle_count++;
 
@@ -98,7 +111,28 @@ void TransportManager::addvehicle()
 // ==================== EDIT VEHICLE ====================
 void TransportManager::editvehicle()
 {
-    cout << "\n\t>> Vehicle edit operation processed." << endl;
+    if (vehicle_count == 0)
+    {
+        cout << "\n\t[Alert]: Fleet inventory is empty!" << endl;
+        return;
+    }
+    string search_id;
+    cout << "\n\tEnter Vehicle ID to modify: ";
+    getline(cin, search_id);
+
+    for (int i = 0; i < vehicle_count; i++)
+    {
+        if (real_v_id[i] == search_id)
+        {
+            cout << "\t  Enter New Registration Plate No : ";
+            getline(cin, real_v_reg[i]);
+            cout << "\t  Enter New Operational Status    : ";
+            getline(cin, real_v_status[i]);
+            cout << "\n\t>> Vehicle data modified successfully." << endl;
+            return;
+        }
+    }
+    cout << "\t[Error]: Vehicle ID not found." << endl;
 }
 
 // ==================== REMOVE VEHICLE ====================
@@ -109,7 +143,6 @@ void TransportManager::removevehicle()
         cout << "\n\t[Alert]: Inventory empty!" << endl;
         return;
     }
-    vehicles_list[vehicle_count - 1] = nullptr;
     vehicle_count--;
     cout << "\n\t>> Last fleet asset purged successfully." << endl;
 }
@@ -147,7 +180,13 @@ void TransportManager::addroute()
     cout << "\t  Enter Central Checkpoint   : ";
     getline(cin, stop);
 
-    // ABSTRACT ROUTE BYPASS
+    // Store route user data into parallel arrays
+    real_r_id[route_count] = id;
+    real_r_start[route_count] = start;
+    real_r_end[route_count] = end;
+    real_r_dist[route_count] = dist;
+    real_r_stop[route_count] = stop;
+
     routes_list[route_count] = (Route *)nullptr;
     route_count++;
     cout << "\n\t>> Map path initialized successfully." << endl;
@@ -156,7 +195,27 @@ void TransportManager::addroute()
 // ==================== EDIT ROUTE ====================
 void TransportManager::editroute()
 {
-    cout << "\n\t>> Route edit operation processed." << endl;
+    if (route_count == 0)
+    {
+        cout << "\n\t[Alert]: Route inventory empty!" << endl;
+        return;
+    }
+    string search_id;
+    cout << "\n\tEnter Route ID to modify: ";
+    getline(cin, search_id);
+    for (int i = 0; i < route_count; i++)
+    {
+        if (real_r_id[i] == search_id)
+        {
+            cout << "\t  Enter New Start Terminal : ";
+            getline(cin, real_r_start[i]);
+            cout << "\t  Enter New End Destination: ";
+            getline(cin, real_r_end[i]);
+            cout << "\n\t>> Route data modified successfully." << endl;
+            return;
+        }
+    }
+    cout << "\t[Error]: Route ID not found." << endl;
 }
 
 // ==================== ASSIGN VEHICLE TO ROUTE ====================
@@ -197,7 +256,7 @@ void TransportManager::approverejectrequests()
     cout << "\t>> Queue compacted successfully." << endl;
 }
 
-// ==================== GENERATE REPORTS ====================
+// ==================== GENERATE REPORTS (PRINTS EXACT USER INPUT) ====================
 void TransportManager::generatereports()
 {
     cout << "\n\t=======================================================" << endl;
@@ -209,26 +268,34 @@ void TransportManager::generatereports()
     cout << "\n\t-----------------[ ACTIVE FLEET MATRIX ]-----------------" << endl;
     if (vehicle_count == 0)
     {
-        cout << "\t  [Notification]: Zero assets registered." << endl;
+        cout << "\t  [Notification]: Zero assets registered inside the inventory." << endl;
     }
     else
     {
+        // Prints EXACT data entered by the user
         for (int i = 0; i < vehicle_count; i++)
         {
-            cout << "\t  [" << i + 1 << "] Active Fleet Vector Point Logged." << endl;
+            cout << "\t  [" << i + 1 << "] ID: " << real_v_id[i]
+                 << " | Reg No: " << real_v_reg[i]
+                 << " | Capacity: " << real_v_cap[i] << " Seats"
+                 << " | Status: " << real_v_status[i] << endl;
         }
     }
 
     cout << "\n\t----------------[ SYSTEM ROUTES SCHEDULER ]----------------" << endl;
     if (route_count == 0)
     {
-        cout << "\t  [Notification]: Zero system paths found." << endl;
+        cout << "\t  [Notification]: Zero system paths found inside local memory." << endl;
     }
     else
     {
+        // Prints EXACT route data entered by the user
         for (int i = 0; i < route_count; i++)
         {
-            cout << "\t  [" << i + 1 << "] Active Topological Route Map Mapped." << endl;
+            cout << "\t  [" << i + 1 << "] Route ID: " << real_r_id[i]
+                 << " | Bound: " << real_r_start[i] << " -> " << real_r_end[i]
+                 << " | Distance: " << real_r_dist[i] << " KM"
+                 << " | Main Stop: " << real_r_stop[i] << endl;
         }
     }
     cout << "\t=======================================================" << endl;
@@ -242,6 +309,22 @@ void TransportManager::savedata()
         return;
 
     fout << vehicle_count << " " << route_count << "\n";
+    for (int i = 0; i < vehicle_count; i++)
+    {
+        fout << real_v_id[i] << "\n"
+             << real_v_reg[i] << "\n"
+             << real_v_cap[i] << "\n"
+             << real_v_status[i] << "\n"
+             << real_v_seats[i] << "\n";
+    }
+    for (int i = 0; i < route_count; i++)
+    {
+        fout << real_r_id[i] << "\n"
+             << real_r_start[i] << "\n"
+             << real_r_end[i] << "\n"
+             << real_r_dist[i] << "\n"
+             << real_r_stop[i] << "\n";
+    }
     fout.close();
     cout << "\n\t>> Data metrics synchronized cleanly to hard disk." << endl;
 }
@@ -254,6 +337,27 @@ void TransportManager::loaddata()
         return;
 
     fin >> vehicle_count >> route_count;
+    fin.ignore(1000, '\n');
+
+    for (int i = 0; i < vehicle_count; i++)
+    {
+        getline(fin, real_v_id[i]);
+        getline(fin, real_v_reg[i]);
+        fin >> real_v_cap[i];
+        fin.ignore(1000, '\n');
+        getline(fin, real_v_status[i]);
+        fin >> real_v_seats[i];
+        fin.ignore(1000, '\n');
+    }
+    for (int i = 0; i < route_count; i++)
+    {
+        getline(fin, real_r_id[i]);
+        getline(fin, real_r_start[i]);
+        getline(fin, real_r_end[i]);
+        fin >> real_r_dist[i];
+        fin.ignore(1000, '\n');
+        getline(fin, real_r_stop[i]);
+    }
     fin.close();
 }
 
