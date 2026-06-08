@@ -1,3 +1,1 @@
-Total Fleet Count   : 2
-Total Mapped Routes : 2
-Total Student Base  : 0
+2 1

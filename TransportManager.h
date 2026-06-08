@@ -4,11 +4,9 @@
 #include "Vehicle.h"
 #include "Bus.h"
 #include "Route.h"
-#include "Person.h"
-#include "Passenger.h"
-#include "StudentPassenger.h"
-#include "StaffPassenger.h"
-#include "FacultyPassenger.h"
+#include "User.h"
+#include "Student.h"
+#include "Admin.h"
 #include "Driver.h"
 #include <string>
 
