@@ -1,21 +1,26 @@
 #ifndef TRANSPORTMANAGER_H
 #define TRANSPORTMANAGER_H
 
-#include "Student.h"
 #include "Vehicle.h"
 #include "Bus.h"
-#include "Van.h"
 #include "Route.h"
+#include "Person.h"
+#include "Passenger.h"
+#include "StudentPassenger.h"
+#include "StaffPassenger.h"
+#include "FacultyPassenger.h"
+#include "Driver.h"
 #include <string>
 
 class TransportManager
 {
 private:
-    Student *students_list[50];
+    // Pointers Arrays for PolyMorphic Allocation
     Vehicle *vehicles_list[50];
-    UniversityRoute *routes_list[50];
+    Route *routes_list[50];
     std::string applications_list[50];
 
+    // Database Counters
     int student_count;
     int vehicle_count;
     int route_count;
@@ -25,6 +30,7 @@ public:
     TransportManager();
     ~TransportManager();
 
+    // Admin Core Operations
     void addvehicle();
     void editvehicle();
     void removevehicle();
@@ -35,11 +41,11 @@ public:
     void approverejectrequests();
     void generatereports();
 
-    // FIX: Yeh declarations zaroori theen taqe compile ho sakay
+    // File Subsystem Pipelines
     void savedata();
     void loaddata();
 
-    void showallstudents();
+    // Student/Public Directory Views
     void showallvehicles();
     void showallroutes();
 };
