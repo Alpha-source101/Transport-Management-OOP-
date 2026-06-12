@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     system("Color 06");
-
+    system("cls");
     TransportManager manager;
     int portal_choice = 0;
 
