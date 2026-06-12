@@ -1,10 +1,13 @@
 #include "TransportManager.h"
 #include <iostream>
+#include <windows.h>
 #include <string>
 using namespace std;
 
 int main()
 {
+    system("Color 06");
+
     TransportManager manager;
     int portal_choice = 0;
 
