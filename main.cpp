@@ -8,7 +8,7 @@ int main()
     TransportManager manager;
     int portal_choice = 0;
 
-    // FIX: Program start hote hi sab se pehle purana data file se uthaye ga
+    //  Program start hote hi sab se pehle purana data file se uthaye ga
     manager.loaddata();
 
     while (true)
